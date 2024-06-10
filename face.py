@@ -98,7 +98,7 @@ class FaceRec:
     
 
     
-    def model(self):       
+    def verify(self):       
         sim_distribution = self.sim_distribution()
         xy = torch.mean(torch.Tensor([x-y for x, y in zip(sim_distribution[2], sim_distribution[3])])) //against camera
         print(xy.item())
