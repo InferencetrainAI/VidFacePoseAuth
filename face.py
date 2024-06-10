@@ -100,7 +100,7 @@ class FaceRec:
     
     def model(self):       
         sim_distribution = self.sim_distribution()
-        xy = torch.mean(torch.Tensor([x-y for x, y in zip(sim_distribution[0], sim_distribution[1])]))
+        xy = torch.mean(torch.Tensor([x-y for x, y in zip(sim_distribution[2], sim_distribution[3])])) //against camera
         print(xy.item())
 
         if xy.item() < 0.3:
