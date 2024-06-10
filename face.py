@@ -1,3 +1,5 @@
+#Disclaimer this has not been tested well
+
 import os
 import cv2
 from insightface.app import FaceAnalysis
