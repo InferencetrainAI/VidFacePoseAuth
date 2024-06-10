@@ -3,7 +3,8 @@ import cv2
 from insightface.app import FaceAnalysis
 import torch
 
-import torch.nn.functional as F
+import sys
+args = sys.argv
 
 
 # prompt: compare face embediggs
@@ -64,7 +65,6 @@ class FaceRec:
 
 
     def sim_distribution(self):
-        attempt_embeddings = self.zip_ground[0::]
         ground_embeddings = self.zip_attempt[len(self.zip_ground)::]
         
         
@@ -98,20 +98,40 @@ class FaceRec:
     
 
     
-    def verify(self):       
-        sim_distribution = self.sim_distribution()
-        xy = torch.mean(torch.Tensor([x-y for x, y in zip(sim_distribution[2], sim_distribution[3])])) //against camera
-        print(xy.item())
+    def model(self, max_itter=3):       
 
-        if xy.item() < 0.3:
-            print(True)        
+        booleans = []
+
+        itter = 0
+        while itter < max_itter:
+            if itter <= max_itter:
+                sim_distribution = self.sim_distribution()
+                xy = torch.mean(torch.Tensor([x-y for x, y in zip(sim_distribution[2], sim_distribution[3])]))
+                print(xy.item())
+
+                if xy.item() < 0.4:
+                    booleans.append(1)      
 
 
-       
+                else:
+                    pass
+
+            itter+=1
 
 
+        if sum(booleans) > 0:
+            os.system('echo "pass"') #after signing in by low root privileges echo 'real password' for elevated root access 
+            
+            
+        else:
+            print('False')
+
+
+        
+
+    def camera(self):
+        
 
 Recognition = FaceRec()
 print(Recognition.model())
-
 
