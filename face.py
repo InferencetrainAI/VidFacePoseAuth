@@ -122,7 +122,7 @@ class FaceRec:
 
 
         if sum(booleans) > 0:
-            os.system("echo 'pass' | -S sudo 'command'") #after su access in by low root privileges echo 'real password' for elevated root access //
+            os.system("echo 'key'") #after su access in by low root privileges echo 'real password' for elevated root access //
                                     #login with very low root access - disclaimer 
             
             
