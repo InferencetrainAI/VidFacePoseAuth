@@ -130,10 +130,7 @@ class FaceRec:
             print('False')
 
 
-        
-
-    def camera(self):
-        
+                
 
 Recognition = FaceRec()
 print(Recognition.model())
